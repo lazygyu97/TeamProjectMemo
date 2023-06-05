@@ -60,9 +60,6 @@ public class MainFrame extends JFrame implements ActionListener {
             Element.main_frame.setVisible(false);
             Element.main_frame.dispose();
             new ListFrame().ListFrame();
-        }else if(e.getSource()==Element.save_btn){
-            qut_data = JOptionPane.showConfirmDialog(Element.write_frame, "저장하시겠습니까?","저장확인", JOptionPane.YES_NO_OPTION);
-
         }else if(e.getSource()==Element.cancle_btn){
             qut_data = JOptionPane.showConfirmDialog(Element.write_frame, "취소하시겠습니까?\n입력하신 내용이 모두 사라집니다.","취소", JOptionPane.YES_NO_OPTION);
 

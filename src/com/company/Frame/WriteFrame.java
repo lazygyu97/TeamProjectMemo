@@ -2,8 +2,12 @@ package com.company.Frame;
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
-public class WriteFrame extends JFrame {
+public class WriteFrame extends JFrame implements ActionListener {
 
     MainFrame main = new MainFrame();
 
@@ -44,12 +48,12 @@ public class WriteFrame extends JFrame {
         Element.save_btn= new JButton("저장");
         Element.save_btn.setBounds(440,250,105,45);
         Element.save_btn.setFont(new Font("고딕", Font.BOLD,16));
-        Element.save_btn.addActionListener(main);
+        Element.save_btn.addActionListener(this);
 
         Element.cancle_btn= new JButton("취소");
         Element.cancle_btn.setBounds(440,310,105,45);
         Element.cancle_btn.setFont(new Font("고딕", Font.BOLD,16));
-        Element.cancle_btn.addActionListener(main);
+        Element.cancle_btn.addActionListener(this);
 
         Element.memo_txt= new JTextArea();
         Element.memo_txt.setBounds(90,400,520,490);
@@ -67,6 +71,30 @@ public class WriteFrame extends JFrame {
 
         Element.write_frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         Element.write_frame.setVisible(true);
+
+    }
+
+    @Override
+    public void actionPerformed(ActionEvent e) {
+        Date today = new Date();
+        SimpleDateFormat date = new SimpleDateFormat("yyyy/MM/dd 'at' HH:mm:ss z");
+
+        if(e.getSource()==Element.save_btn){
+            int qut_data = JOptionPane.showConfirmDialog(Element.write_frame, "저장 하실래요?", "저장확인", JOptionPane.YES_NO_OPTION);
+
+            if (qut_data == 0){
+                String getName = Element.name_txt.getText();
+                String getPassword = Element.pw_txt.getText();
+                String getMemo = Element.memo_txt.getText();
+                System.out.println(getName);
+                System.out.println(getPassword);
+                System.out.println(getMemo);
+                System.out.println(date.format(today));
+
+            }
+
+
+       }
 
     }
 
