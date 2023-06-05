@@ -1,9 +1,14 @@
 package com.company.Memo;
 
-import java.util.Date;
 import java.util.HashMap;
+
 //커밋을 위한 주석
 public class Memo {
+
+    private MemoAbstractOperation operation;
+    public Memo(MemoAbstractOperation operation){
+        this.operation=operation;
+    }
 
     public int index;
     public String name;
