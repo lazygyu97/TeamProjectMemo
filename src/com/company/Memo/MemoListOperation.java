@@ -2,10 +2,9 @@ package com.company.Memo;
 
 import java.util.ArrayList;
 
-public class MemoListOperation extends MemoAbstractOperation{
+public class MemoListOperation {
 
-    @Override
-    public ArrayList operate(int index, String name, String password, String memo, String day) {
-        return null;
+    public void operate(int index, String name, String password, String memo, String day) {
+
     }
 }

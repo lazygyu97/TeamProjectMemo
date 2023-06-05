@@ -5,17 +5,20 @@ import java.awt.*;
 
 public class WriteFrame extends JFrame {
 
-    MainFrame main = new MainFrame();
+    private MainFrame main = new MainFrame();
 
     //메모장 입력화면
-    public void WriteFrame(){
+    public WriteFrame(){
+        writeFrame();
+    }
 
+    private void writeFrame(){
         //시작화면 기본설정
-        Element.write_frame = new JFrame("메모장");
-        Element.write_frame.setSize(700,1000);
-        Element.write_frame.setLocationRelativeTo(null);
-        Element.write_frame.getContentPane().setLayout(null);
-        Element.write_frame.setResizable(false);
+        Element.writeFrame = new JFrame("메모장");
+        Element.writeFrame.setSize(700,1000);
+        Element.writeFrame.setLocationRelativeTo(null);
+        Element.writeFrame.getContentPane().setLayout(null);
+        Element.writeFrame.setResizable(false);
 
         //제목
         Element.logo=new JButton("메모장 입력");
@@ -29,45 +32,43 @@ public class WriteFrame extends JFrame {
         Element.notice.setFont(new Font("고딕", Font.BOLD,16));
         Element.notice.setBorderPainted(false);
 
-        Element.name_label=new JLabel("이름 :");
-        Element.name_label.setBounds(150,263,39,19);
-        Element.name_txt=new JTextField();
-        Element.name_txt.setToolTipText("이름을 입력해주세요");
-        Element.name_txt.setBounds(200,250,215,45);
+        Element.nameLabel=new JLabel("이름 :");
+        Element.nameLabel.setBounds(150,263,39,19);
+        Element.nameTxt=new JTextField();
+        Element.nameTxt.setToolTipText("이름을 입력해주세요");
+        Element.nameTxt.setBounds(200,250,215,45);
 
-        Element.pw_label=new JLabel("비밀번호 :");
-        Element.pw_label.setBounds(135,322,68,19);
-        Element.pw_txt=new JTextField();
-        Element.pw_txt.setToolTipText("비밀번호를 입력해주세요");
-        Element.pw_txt.setBounds(200,310,215,45);
+        Element.pwLabel=new JLabel("비밀번호 :");
+        Element.pwLabel.setBounds(135,322,68,19);
+        Element.pwTxt=new JTextField();
+        Element.pwTxt.setToolTipText("비밀번호를 입력해주세요");
+        Element.pwTxt.setBounds(200,310,215,45);
 
-        Element.save_btn= new JButton("저장");
-        Element.save_btn.setBounds(440,250,105,45);
-        Element.save_btn.setFont(new Font("고딕", Font.BOLD,16));
-        Element.save_btn.addActionListener(main);
+        Element.saveBtn= new JButton("저장");
+        Element.saveBtn.setBounds(440,250,105,45);
+        Element.saveBtn.setFont(new Font("고딕", Font.BOLD,16));
+        Element.saveBtn.addActionListener(main);
 
-        Element.cancle_btn= new JButton("취소");
-        Element.cancle_btn.setBounds(440,310,105,45);
-        Element.cancle_btn.setFont(new Font("고딕", Font.BOLD,16));
-        Element.cancle_btn.addActionListener(main);
+        Element.cancleBtn= new JButton("취소");
+        Element.cancleBtn.setBounds(440,310,105,45);
+        Element.cancleBtn.setFont(new Font("고딕", Font.BOLD,16));
+        Element.cancleBtn.addActionListener(main);
 
-        Element.memo_txt= new JTextArea();
-        Element.memo_txt.setBounds(90,400,520,490);
-        Element.memo_txt.setLineWrap(true);
+        Element.memoTxt= new JTextArea();
+        Element.memoTxt.setBounds(90,400,520,490);
+        Element.memoTxt.setLineWrap(true);
 
-        Element.write_frame.add(Element.logo);
-        Element.write_frame.add(Element.notice);
-        Element.write_frame.add(Element.name_label);
-        Element.write_frame.add(Element.name_txt);
-        Element.write_frame.add(Element.pw_label);
-        Element.write_frame.add(Element.pw_txt);
-        Element.write_frame.add(Element.save_btn);
-        Element.write_frame.add(Element.cancle_btn);
-        Element.write_frame.add(Element.memo_txt);
+        Element.writeFrame.add(Element.logo);
+        Element.writeFrame.add(Element.notice);
+        Element.writeFrame.add(Element.nameLabel);
+        Element.writeFrame.add(Element.nameTxt);
+        Element.writeFrame.add(Element.pwLabel);
+        Element.writeFrame.add(Element.pwTxt);
+        Element.writeFrame.add(Element.saveBtn);
+        Element.writeFrame.add(Element.cancleBtn);
+        Element.writeFrame.add(Element.memoTxt);
 
-        Element.write_frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        Element.write_frame.setVisible(true);
-
+        Element.writeFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        Element.writeFrame.setVisible(true);
     }
-
 }

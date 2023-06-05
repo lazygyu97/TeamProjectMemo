@@ -10,15 +10,19 @@ public class Memo {
         this.operation=operation;
     }
 
-    public int index;
+    public int index; //글번호
     public String name;
     public String password;
     public String memo;
     public String day;
 
-    public HashMap<Integer,Memo> memo_list =new HashMap<>();
+    private final HashMap<Integer,Memo> memoList =new HashMap<>();
 
+    public HashMap<Integer,Memo> getMemoList() {
+        return memoList;
+    }
 
+    public Memo() {}
     public Memo(int index,String name, String password, String memo,String day){
         this.index=index;
         this.name=name;
@@ -27,17 +31,9 @@ public class Memo {
         this.day=day;
     }
 
-    public Memo() {
-
-
+    //Memo 인스턴스의 자료구조를 map 으로 설정
+    public void addMemo(int index,String name, String password, String memo,String day){
+        Memo memo_value =new Memo();
+        memoList.put(index,memo_value);
     }
-
-
-    public String Memo(int index,String name, String password, String memo,String day){
-        String result="";
-        Memo memo_value =new Memo(index,name,password,memo,day);
-        memo_list.put(index,memo_value);
-        return result;
-    }
-
 }
