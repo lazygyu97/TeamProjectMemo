@@ -1,11 +1,20 @@
 package com.company.Frame;
 
+import com.company.Memo.Memo;
+import com.company.Memo.MemoInsertOperation;
+import com.company.Memo.MemoListOperation;
+
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
-public class WriteFrame extends JFrame {
+public class WriteFrame extends JFrame implements ActionListener {
 
-    MainFrame main = new MainFrame();
+    int index=Memo.memo_list.size();
+    Memo memoAdd= new Memo(new MemoInsertOperation());
 
     //메모장 입력화면
     public void WriteFrame(){
@@ -44,12 +53,12 @@ public class WriteFrame extends JFrame {
         Element.save_btn= new JButton("저장");
         Element.save_btn.setBounds(440,250,105,45);
         Element.save_btn.setFont(new Font("고딕", Font.BOLD,16));
-        Element.save_btn.addActionListener(main);
+        Element.save_btn.addActionListener(this);
 
         Element.cancle_btn= new JButton("취소");
         Element.cancle_btn.setBounds(440,310,105,45);
         Element.cancle_btn.setFont(new Font("고딕", Font.BOLD,16));
-        Element.cancle_btn.addActionListener(main);
+        Element.cancle_btn.addActionListener(this);
 
         Element.memo_txt= new JTextArea();
         Element.memo_txt.setBounds(90,400,520,490);
@@ -70,4 +79,43 @@ public class WriteFrame extends JFrame {
 
     }
 
+    @Override
+    public void actionPerformed(ActionEvent e) {
+        int qut_data;
+        if (e.getSource()==Element.save_btn){
+
+            String getName=Element.name_txt.getText();
+            String getPassword=Element.pw_txt.getText();
+            String getMemo=Element.memo_txt.getText();
+
+            if(getMemo.isEmpty() || getName.isEmpty() || getPassword.isEmpty()){
+                System.out.println("메모값이 없습니다.");
+                JOptionPane.showMessageDialog(this, "이름,비밀번호,내용을 모두 입력해주세요.","저장 실패",JOptionPane.ERROR_MESSAGE);
+            }else {
+
+                qut_data = JOptionPane.showConfirmDialog(Element.write_frame, "저장하시겠습니까?","저장확인", JOptionPane.YES_NO_OPTION);
+                if (qut_data==0){
+                    index +=1;
+                    Date today = new Date();
+                    SimpleDateFormat date = new SimpleDateFormat("yyyy/MM/dd");
+                    SimpleDateFormat time = new SimpleDateFormat("hh:mm:ss a");
+                    memoAdd.operation.operate(index,getName,getPassword,getMemo,date.format(today)+" "+time.format(today));
+                    Element.name_txt.setText("");
+                    Element.pw_txt.setText("");
+                    Element.memo_txt.setText("");
+                }else {
+                    System.out.println("저장하지 않습니다.");
+                }
+            }
+
+        }else if(e.getSource()==Element.cancle_btn){
+            qut_data = JOptionPane.showConfirmDialog(Element.write_frame, "취소하시겠습니까?\n입력하신 내용이 모두 사라집니다.","취소", JOptionPane.YES_NO_OPTION);
+
+            if (qut_data==0){
+                Element.write_frame.dispose();
+                Element.main_frame.setVisible(true);
+            }
+        }
+
+    }
 }
