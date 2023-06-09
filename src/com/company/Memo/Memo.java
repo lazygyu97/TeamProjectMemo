@@ -5,7 +5,9 @@ import java.util.HashMap;
 //커밋을 위한 주석
 public class Memo {
 
-    private MemoAbstractOperation operation;
+    //private getter setter ->
+    //lombok-> 공부
+    public MemoAbstractOperation operation;
     public Memo(MemoAbstractOperation operation){
         this.operation=operation;
     }
@@ -16,8 +18,8 @@ public class Memo {
     public String memo;
     public String day;
 
-    public HashMap<Integer,Memo> memo_list =new HashMap<>();
-
+    //쓰레드 세이프티 주의 ConcurrentHashMap
+    public static HashMap<Integer,Memo> memo_list =new HashMap<>();
 
     public Memo(int index,String name, String password, String memo,String day){
         this.index=index;
@@ -27,17 +29,6 @@ public class Memo {
         this.day=day;
     }
 
-    public Memo() {
-
-
-    }
-
-
-    public String Memo(int index,String name, String password, String memo,String day){
-        String result="";
-        Memo memo_value =new Memo(index,name,password,memo,day);
-        memo_list.put(index,memo_value);
-        return result;
-    }
 
 }
+//이름 이랑 전화번호
